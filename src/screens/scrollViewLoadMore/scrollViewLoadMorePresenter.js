@@ -3,7 +3,7 @@ export default class ScrollViewLoadMorePresenter {
         this.scrollViewLoadMoreView = ScrollViewLoadMoreView
     }
 
-    IsEnd = ({ layoutMeasurement, contentOffset, contentSize }) => {
+    isEnd = ({ layoutMeasurement, contentOffset, contentSize }) => {
         let { type } = this.scrollViewLoadMoreView.state
         const padding = 20
         let dim = type == 'column' ? 'width' : 'height'

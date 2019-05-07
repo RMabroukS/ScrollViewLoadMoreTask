@@ -13,6 +13,8 @@
     "react-native-device-info": "^1.6.1",
     "react-native-extra-dimensions-android": "^1.2.5",
     "react-native-gesture-handler": "^1.2.1",
+    "react-native-i18n": "^2.0.15",
+    "react-native-restart": "0.0.10",
     "react-native-vector-icons": "^6.4.2",
     "react-navigation": "^3.9.1",
     "react-redux": "^7.0.3",

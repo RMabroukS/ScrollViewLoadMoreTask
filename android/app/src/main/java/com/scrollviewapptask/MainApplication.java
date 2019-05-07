@@ -3,6 +3,8 @@ package com.scrollviewapptask;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.avishayil.rnrestart.ReactNativeRestartPackage;
+import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import ca.jaysoo.extradimensions.ExtraDimensionsPackage;
@@ -27,6 +29,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new ReactNativeRestartPackage(),
+            new RNI18nPackage(),
             new VectorIconsPackage(),
             new RNGestureHandlerPackage(),
             new ExtraDimensionsPackage(),

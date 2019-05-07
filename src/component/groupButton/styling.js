@@ -2,7 +2,7 @@ import color from "../../constainers/color";
 
 export default {
     container: {
-        width: '48%',
+        width: '40%',
         height: '95%',
         borderWidth: 1,
         borderColor: color.gray,

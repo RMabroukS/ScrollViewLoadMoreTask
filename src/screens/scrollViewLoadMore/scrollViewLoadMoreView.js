@@ -11,6 +11,7 @@ import { UserAction } from '../../actions/userAction';
 import { Indicator } from '../../component/Indicator/Indicator';
 import { Header } from '../../component/header/header';
 import ScrollViewLoadMorePresenter from './scrollViewLoadMorePresenter';
+import { strings, setAppLanguage } from '../../locals';
 
 type Props = {
     isLoading: Boolean,
@@ -55,11 +56,13 @@ class ScrollViewLoadMoreView extends Component<Props, State> {
                             [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }]
                         )}
                         onMomentumScrollEnd={({ nativeEvent }) => {
-                            if (this.scrollViewLoadMorePresenter.IsEnd(nativeEvent)) {
+                            if (this.scrollViewLoadMorePresenter.isEnd(nativeEvent)) {
                                 if (!isFinsh)
-                                    this.setState({ page: page + 1 }, () => {
-                                        this.props.getList({ page })
-                                    })
+                                    this.setState((prvState) => (
+                                        { page: prvState.page }), () => {
+                                            this.props.getList({ page })
+                                        })
+
                             }
                         }}
                         contentContainerStyle={styles.contentContainerStyle}
@@ -68,9 +71,9 @@ class ScrollViewLoadMoreView extends Component<Props, State> {
                     >
                         {list.map((item, index) => {
                             return (<Item
-                            onPress={()=>{
-                                this.props.navigation.navigate('detailView',{index:index})
-                            }}
+                                onPress={() => {
+                                    this.props.navigation.navigate('detailView', { index: index })
+                                }}
                                 uri={item.image}
                                 type={this.state.type}
                                 title={item.name}
@@ -95,12 +98,14 @@ class ScrollViewLoadMoreView extends Component<Props, State> {
                             this.setState({ type: 'column' })
                         }} />
                     </GroupButton>
-                    <GroupButton title='sort by'>
-                        <ChooseButton text='grid' onPress={() => {
-                            this.setState({ type: 'name' })
+
+                    <GroupButton title='Language'>
+                        <ChooseButton text={strings('arabic')} onPress={() => {
+                            setAppLanguage('ar', true)
+
                         }} />
-                        <ChooseButton text='row' onPress={() => {
-                            this.setState({ type: 'id' })
+                        <ChooseButton text={strings('english')} onPress={() => {
+                            setAppLanguage('en', true)
                         }} />
                     </GroupButton>
 
